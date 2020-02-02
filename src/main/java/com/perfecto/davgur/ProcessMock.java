@@ -23,15 +23,15 @@ public class ProcessMock {
                 i++;
                 sleep(100);
                 if (i % 10 == 0) {
-                    result.setProcent(i * 100 % this.interactions);
+                    result.setPercent(i * 100 % this.interactions);
                     result.setStatus(TestStatusEnum.RUNNING);
                     this.runCallbacks(result);
                 }
             }
-            result.setProcent(i * 100 % this.interactions);
+            result.setPercent(i * 100 % this.interactions);
             result.setStatus(this.isStop ? TestStatusEnum.STOPED : TestStatusEnum.ENDED);
         } catch (Exception e) {
-            result.setProcent(i * 100 % this.interactions);
+            result.setPercent(i * 100 % this.interactions);
             result.setStatus(TestStatusEnum.ERROR);
             result.setMessage(e.getMessage());
         }

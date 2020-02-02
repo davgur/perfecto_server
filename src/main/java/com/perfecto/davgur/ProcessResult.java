@@ -1,7 +1,9 @@
 package com.perfecto.davgur;
 
-public class ProcessResult {
-    private int procent;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+public class ProcessResult extends TextWebSocketHandler {
+    private int percent;
     private TestStatusEnum status;
     private String message;
 
@@ -14,12 +16,12 @@ public class ProcessResult {
         this.message = message;
     }
 
-    public int getProcent() {
-        return procent;
+    public int getPercent() {
+        return percent;
     }
 
-    public void setProcent(int procent) {
-        this.procent = procent;
+    public void setPercent(int percent) {
+        this.percent = percent;
     }
 
     public TestStatusEnum getStatus() {

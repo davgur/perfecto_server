@@ -5,22 +5,19 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class TestItem implements IProcessListener {
+public class TestItem {
     private String name;
     private String owner;
     private Stack<Step> steps = new Stack<>();
     private TestStatusEnum status = TestStatusEnum.NOT_STARTED;
     private Long id;
     private ProcessMock process;
+    private ProcessListener listener = new ProcessListener();
 
 
     public TestItem(String name) {
         this.setName(name);
-        this.process.addListener(this);
-    }
-
-    public void processCallback(ProcessResult result) {
-
+        this.process.addListener(this.listener);
     }
 
     public void add(Step step) {

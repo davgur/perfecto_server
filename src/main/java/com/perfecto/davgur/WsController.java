@@ -6,11 +6,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WsController {
-    @MessageMapping("/push")
+   @MessageMapping("/socket")
     @SendTo("/processes")
     public ProcessResult run(ProcessResult result) {
         return result;
     }
-
-
 }

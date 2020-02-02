@@ -1,5 +1,5 @@
 package com.perfecto.davgur;
 
 public interface IProcessListener {
-    public void processCallback(ProcessResult result);
+    void processCallback(ProcessResult result);
 }
