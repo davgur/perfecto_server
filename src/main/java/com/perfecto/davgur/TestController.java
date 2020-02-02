@@ -20,7 +20,7 @@ public class TestController {
 
     @RequestMapping(value = "/all")
     public String getAll() throws JsonProcessingException {
-         Object[] list = TestList.all().entrySet().toArray();
+        Object[] list = TestList.all().entrySet().toArray();
         if (list.length == 0)
             list = new String[]{};
         return new Gson().toJson(list);
@@ -35,7 +35,7 @@ public class TestController {
     @RequestMapping(value = "/stop", method = RequestMethod.POST)
     public TestItem stop(@RequestBody String json) {
         Map<String, Object> map = parser.parseMap(json);
-        Long id = Long.parseLong((String) map.get("id"));
+        Long id = Long.valueOf((Integer) map.get("id"));
 
         TestItem test = TestList.getTest(id);
         test.stop();
@@ -45,9 +45,11 @@ public class TestController {
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public TestItem start(@RequestBody String json) {
         Map<String, Object> map = parser.parseMap(json);
-        Long id = Long.parseLong((String) map.get("id"));
+        Long id = Long.valueOf((Integer) map.get("id"));
 
-        return TestList.start(id);
+        TestItem test = TestList.getTest(id);
+        test.start();
+        return test;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
